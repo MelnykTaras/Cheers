@@ -36,9 +36,9 @@ open class CheerView: UIView {
     #endif
     
     let emitter = CAEmitterLayer()
-    emitter.emitterPosition = CGPoint(x: bounds.width / 2, y: yOrigin)
+    emitter.emitterPosition = CGPoint(x: UIScreen.main.bounds.width / 2, y: yOrigin - 70)
     emitter.emitterShape = CAEmitterLayerEmitterShape.line
-    emitter.emitterSize = CGSize(width: bounds.width, height: 1)
+    emitter.emitterSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
     emitter.renderMode = CAEmitterLayerRenderMode.additive
 
     // This combination will ensure that all color/image combinations are evenly distributed.
@@ -51,7 +51,7 @@ open class CheerView: UIView {
 
     let cells: [CAEmitterCell] = combinations.reduce([]) { (accum, combination) in
       let cell = CAEmitterCell()
-      cell.birthRate = 20
+      cell.birthRate = 8
       cell.lifetime = 20.0
       cell.lifetimeRange = 10
       cell.velocity = 250 * yMultiplier
@@ -59,7 +59,7 @@ open class CheerView: UIView {
       cell.emissionLongitude = CGFloat.pi
       cell.emissionRange = CGFloat.pi * 0.2
       cell.spinRange = 5
-      cell.scale = 0.3
+      cell.scale = 0.35
       cell.scaleRange = 0.2
       cell.color = combination.0.cgColor
       cell.alphaSpeed = -0.1
